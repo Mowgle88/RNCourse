@@ -28,26 +28,29 @@ export default function App() {
   }
 
   return (
-    <View style={styles.appContainer}>
-      <Button title='Add New Goal' color='#5e0acc' onPress={changeModalIsVisible} />
-      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={changeModalIsVisible} />
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={courseGoals}
-          keyExtractor={(item, index) => item.id}
-          renderItem={(itemData) => {
-            return (
-              <GoalItemFlatList
-                text={itemData.item.text}
-                id={itemData.item.id}
-                onDeleteItem={deleteGoalHandler}
-              />
-            );
-          }}
-        />
-        {/* <GoalItemScrollView courseGoals={courseGoals} /> */}
+    <>
+      <StatusBar style='light' />
+      <View style={styles.appContainer}>
+        <Button title='Add New Goal' color='#b180f0' onPress={changeModalIsVisible} />
+        <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={changeModalIsVisible} />
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={courseGoals}
+            keyExtractor={(item, index) => item.id}
+            renderItem={(itemData) => {
+              return (
+                <GoalItemFlatList
+                  text={itemData.item.text}
+                  id={itemData.item.id}
+                  onDeleteItem={deleteGoalHandler}
+                />
+              );
+            }}
+          />
+          {/* <GoalItemScrollView courseGoals={courseGoals} /> */}
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -55,7 +58,8 @@ const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
     padding: 50,
-    paddingHorizontal: 16
+    paddingHorizontal: 16,
+    backgroundColor: '#1e085a'
   },
   goalsContainer: {
     flex: 5
