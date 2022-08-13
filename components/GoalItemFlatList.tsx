@@ -9,15 +9,20 @@ interface GoalItemFlatListProps {
 
 export default function GoalItemFlatList(this: HTMLElement, props: GoalItemFlatListProps) {
   return (
-    <Pressable onPress={props.onDeleteItem.bind(this, props.id)}>
-      <View style={styles.goalItem}>
+
+    <View style={styles.goalItem}>
+      <Pressable
+        android_ripple={{ color: '#dddddd' }}
+        onPress={props.onDeleteItem.bind(this, props.id)}
+        style={({ pressed }) => pressed && styles.pressedItem}
+      >
         <Text style={styles.goalText}>{props.text}</Text>
         {/* <Button
         title='Delete'
         onPress={props.onDeleteItem.bind(this, props.id)}
       /> */}
-      </View>
-    </Pressable>
+      </Pressable>
+    </View>
   )
 }
 
@@ -26,12 +31,15 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 6,
     backgroundColor: '#5e0acc',
-    flexDirection: 'row',
-    alignItems: 'center'
+    // flexDirection: 'row',
+    // alignItems: 'center'
   },
   goalText: {
     padding: 8,
     color: 'white',
-    flex: 1
+    // flex: 1
+  },
+  pressedItem: {
+    opacity: 0.5
   }
 });
